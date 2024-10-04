@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1081418837052",
+    "project_id": "assignment-f7101",
+    "storage_bucket": "assignment-f7101.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081418837052:android:6e63aec1b03bf9089e6739",
+        "android_client_info": {
+          "package_name": "com.example.digital_salt"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx1GTbLsflTuWQkVHoAlgDwlpNfLzDWIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
