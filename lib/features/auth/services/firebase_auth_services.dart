@@ -22,7 +22,7 @@ class FirebaseAuthServices {
           email: email, password: password);
       return credential.user;
     } catch (e) {
-      print("some error occour");
+      Exception("some error occour");
     }
   }
 }

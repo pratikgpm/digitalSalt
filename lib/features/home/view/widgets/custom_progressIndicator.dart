@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class GradientProgressIndicator extends StatelessWidget {
   final double value;
   final Gradient gradient;
@@ -42,13 +43,14 @@ class _GradientProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..shader = gradient.createShader(Rect.fromLTWH(0, 0, size.width * value, size.height))
+      ..shader = gradient
+          .createShader(Rect.fromLTWH(0, 0, size.width * value, size.height))
       ..style = PaintingStyle.fill;
 
     canvas.drawRRect(
       RRect.fromRectAndRadius(
         Rect.fromLTWH(0, 0, size.width * value, size.height),
-        Radius.circular(5.0),
+        const Radius.circular(5.0),
       ),
       paint,
     );

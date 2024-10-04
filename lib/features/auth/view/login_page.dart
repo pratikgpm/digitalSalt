@@ -71,126 +71,129 @@ class _loginViewState extends State<loginView> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Your Email",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Pallete.regFontColr),
-                    ),
-                    CustomFields.CustomFields(
-                      controller: emailController,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      "Password",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Pallete.regFontColr),
-                    ),
-                    CustomFields.CustomFields(
-                      controller: passwordController,
-                      isPassword: true,
-                    ),
-                    const SizedBox(height: 13),
-                    Align(
-                        alignment: Alignment.centerRight,
-                        //ADD THE FORGOT PASSWORD FUNCTIONALITY
-                        child: InkWell(
-                          onTap: () {
-                            print("working");
-                          },
-                          child: const Text(
-                            "Forget password?",
-                            style: TextStyle(
-                                color: Pallete.regFontColr,
-                                fontWeight: FontWeight.w400,
-                                fontSize: 14),
-                          ),
-                        )),
-                    const SizedBox(
-                      height: 13,
-                    ),
-                    customButton(
-                      title: "Log In",
-                      onPressed: _signin,
-                    ),
-                    const SizedBox(
-                      height: 25,
-                    ),
-                    Center(
-                      child: RichText(
-                        text: TextSpan(
-                            text: 'Don’t have an account? ',
-                            style: const TextStyle(
-                                color: Pallete.regFontColr,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Sign up',
-                                style: const TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  decoration: TextDecoration.underline,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    // Handle the login tap here.
-                                    Navigator.push(context, signupView.route());
-                                  },
-                              )
-                            ]),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Your Email",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Pallete.regFontColr),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 23,
-                    ),
-                    const Row(
-                      children: [
-                        Expanded(
-                            child: Divider(
-                          thickness: 0.5,
-                          endIndent: 20,
-                        )),
-                        Text(
-                          "Or login with",
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.w400),
+                      CustomFields.CustomFields(
+                        controller: emailController,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      const Text(
+                        "Password",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Pallete.regFontColr),
+                      ),
+                      CustomFields.CustomFields(
+                        controller: passwordController,
+                        isPassword: true,
+                      ),
+                      const SizedBox(height: 13),
+                      Align(
+                          alignment: Alignment.centerRight,
+                          //ADD THE FORGOT PASSWORD FUNCTIONALITY
+                          child: InkWell(
+                            onTap: () {
+                              print("working");
+                            },
+                            child: const Text(
+                              "Forget password?",
+                              style: TextStyle(
+                                  color: Pallete.regFontColr,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 14),
+                            ),
+                          )),
+                      const SizedBox(
+                        height: 13,
+                      ),
+                      customButton(
+                        title: "Log In",
+                        onPressed: _signin,
+                      ),
+                      const SizedBox(
+                        height: 25,
+                      ),
+                      Center(
+                        child: RichText(
+                          text: TextSpan(
+                              text: 'Don’t have an account? ',
+                              style: const TextStyle(
+                                  color: Pallete.regFontColr,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w400),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Sign up',
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // Handle the login tap here.
+                                      Navigator.push(context, signupView.route());
+                                    },
+                                )
+                              ]),
                         ),
-                        Expanded(
-                            child: Divider(
-                          thickness: 0.5,
-                          indent: 20,
-                        ),
-                        ),
-
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 21,
-                    ),
-                    Center(
-                      child: SizedBox(
-                        height: 48,
-                        width: 122, child:
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      ),
+                      const SizedBox(
+                        height: 23,
+                      ),
+                      const Row(
                         children: [
-                        SvgPicture.asset('assets/svg_files/google_.svg'),
-                        SvgPicture.asset('assets/svg_files/facebook_.svg'),
+                          Expanded(
+                              child: Divider(
+                            thickness: 0.5,
+                            endIndent: 20,
+                          )),
+                          Text(
+                            "Or login with",
+                            style: TextStyle(
+                                fontSize: 12, fontWeight: FontWeight.w400),
+                          ),
+                          Expanded(
+                              child: Divider(
+                            thickness: 0.5,
+                            indent: 20,
+                          ),
+                          ),
+
                         ],
                       ),
+                      const SizedBox(
+                        height: 21,
                       ),
-                    ),
-                  ],
+                      Center(
+                        child: SizedBox(
+                          height: 48,
+                          width: 122, child:
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                          SvgPicture.asset('assets/svg_files/google_.svg'),
+                          SvgPicture.asset('assets/svg_files/facebook_.svg'),
+                          ],
+                        ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -26,23 +26,23 @@ class _CategoryToggleButtonsState extends State<CategoryToggleButtons> {
 
   @override
   Widget build(BuildContext context) {
-    return ToggleButtons(fillColor: Pallete.bgBlue,
-      textStyle: TextStyle(fontSize: 12,fontWeight: FontWeight.w400),
+    return ToggleButtons(
+      fillColor: Pallete.bgBlue,
+      textStyle: const TextStyle(fontSize: 12, fontWeight: FontWeight.w400),
       renderBorder: false,
       selectedColor: Pallete.whiteColor,
       children: widget.categories
           .map((category) => Container(
-        margin: EdgeInsets.symmetric(
-          horizontal: 10
-        ),
+                margin: EdgeInsets.symmetric(horizontal: 10),
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-                decoration:
-                    BoxDecoration(borderRadius: BorderRadius.circular(15),),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                ),
                 child: Center(child: Text(category)),
               ))
           .toList(),
       isSelected: _selected,
-      color:  Pallete.bgBlue,
+      color: Pallete.bgBlue,
       onPressed: (int index) {
         setState(() {
           _selected[index] = !_selected[index];

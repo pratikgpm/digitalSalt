@@ -54,23 +54,31 @@ class _RangeSliderWithLabelsState extends State<RangeSliderWithLabels> {
                   widget.onChanged(values);
                 },
               ),
-              SizedBox(height:10), // Add space for the labels
+              const SizedBox(height: 10), // Add space for the labels
             ],
           ),
           Positioned(
-            left: (_currentRangeValues.start / widget.max) * 350, // Adjust for width
+            left: (_currentRangeValues.start / widget.max) * 350,
+            // Adjust for width
             top: 40,
             child: Text(
               '\$${_currentRangeValues.start.round().toString()}',
-              style: TextStyle(color: Pallete.bgBlue,fontWeight: FontWeight.w500,fontSize: 14),
+              style: TextStyle(
+                  color: Pallete.bgBlue,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14),
             ),
           ),
           Positioned(
-            left: (_currentRangeValues.end / widget.max) * 310, // Adjust for width
+            left: (_currentRangeValues.end / widget.max) * 310,
+            // Adjust for width
             top: 40,
             child: Text(
               '\$${_currentRangeValues.end.round().toString()}',
-              style: TextStyle(color: Pallete.bgBlue,fontWeight: FontWeight.w500,fontSize: 14),
+              style: TextStyle(
+                  color: Pallete.bgBlue,
+                  fontWeight: FontWeight.w500,
+                  fontSize: 14),
             ),
           ),
         ],

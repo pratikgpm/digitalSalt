@@ -79,105 +79,108 @@ class _signupViewState extends State<signupView> {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 24.0, vertical: 32),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      "Your Email",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Pallete.regFontColr),
-                    ),
-                    CustomFields.CustomFields(
-                      controller: emailController,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    const Text(
-                      "Password",
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Pallete.regFontColr),
-                    ),
-                    CustomFields.CustomFields(
-                      controller: passwordController,
-                      isPassword: true,
-                    ),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    customButton(
-                      title: "Creat account",
-                      onPressed: _signup,
-                    ),
-                    SizedBox(
-                      height: 17,
-                    ),
-                    Container(
-                      height: 36,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          SizedBox(
-                            height: 16,
-                            child: Checkbox(
-                              activeColor: Pallete.bgBlue,
-                              value: _isChecked,
-                              onChanged: (bool? newValue) {
-                                setState(() {
-                                  _isChecked = newValue!;
-                                });
-                              },
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Your Email",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Pallete.regFontColr),
+                      ),
+                      CustomFields.CustomFields(
+                        controller: emailController,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      const Text(
+                        "Password",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Pallete.regFontColr),
+                      ),
+                      CustomFields.CustomFields(
+                        controller: passwordController,
+                        isPassword: true,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      customButton(
+                        title: "Creat account",
+                        onPressed: _signup,
+                      ),
+                      SizedBox(
+                        height: 17,
+                      ),
+                      Container(
+                        height: 36,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            SizedBox(
+                              height: 16,
+                              child: Checkbox(
+                                activeColor: Pallete.bgBlue,
+                                value: _isChecked,
+                                onChanged: (bool? newValue) {
+                                  setState(() {
+                                    _isChecked = newValue!;
+                                  });
+                                },
+                              ),
                             ),
-                          ),
-                          Container(
-                            height: 36,
-                            child: Text(
-                              "By creating an account you have to agre\nwith our them & condication.",
-                              textAlign: TextAlign.start,
+                            Container(
+                              height: 36,
+                              child: Text(
+                                "By creating an account you have to agre\nwith our them & condication.",
+                                textAlign: TextAlign.start,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 12,
+                                    color: Pallete.regFontColr),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 25,
+                      ),
+                      Center(
+                        child: RichText(
+                          text: TextSpan(
+                              text: 'Already have an account? ',
                               style: TextStyle(
-                                  fontWeight: FontWeight.w400,
+                                  color: Pallete.regFontColr,
                                   fontSize: 12,
-                                  color: Pallete.regFontColr),
-                            ),
-                          )
-                        ],
+                                  fontWeight: FontWeight.w400),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Login',
+                                  style: const TextStyle(
+                                    color: Colors.blue,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w700,
+                                    decoration: TextDecoration.underline,
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () {
+                                      // Handle the login tap here.
+                                      Navigator.push(context, loginView.route());
+                                    },
+                                )
+                              ]),
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Center(
-                      child: RichText(
-                        text: TextSpan(
-                            text: 'Already have an account? ',
-                            style: TextStyle(
-                                color: Pallete.regFontColr,
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Login',
-                                style: const TextStyle(
-                                  color: Colors.blue,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w700,
-                                  decoration: TextDecoration.underline,
-                                ),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    // Handle the login tap here.
-                                    Navigator.push(context, loginView.route());
-                                  },
-                              )
-                            ]),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),

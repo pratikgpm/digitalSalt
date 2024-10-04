@@ -1,6 +1,5 @@
 // filter_bottom_sheet.dart
 import 'package:digital_salt/core/widget/customButton.dart';
-import 'package:digital_salt/features/home/view/widgets/toggleButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -46,7 +45,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           IconButton(
@@ -54,8 +53,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                 Navigator.pop(context);
               },
               icon: SvgPicture.asset('assets/svg_files/crossBold.svg')),
-          Center(
-            child: const Text(
+          const Center(
+            child: Text(
               "Search Filter",
               style: TextStyle(
                   fontSize: 18,
@@ -63,10 +62,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   color: Pallete.headingFontColr),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 18,
           ),
-          Text(
+          const Text(
             "Categories",
             style: TextStyle(
                 fontSize: 16,
@@ -76,18 +75,24 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: CategoryToggleButtons(
-              categories: ["Beauty", "fragrances", "furniture","groceries","home-decoration","kitchen-accessories"],
+              categories: [
+                "Beauty",
+                "fragrances",
+                "furniture",
+                "groceries",
+                "home-decoration",
+                "kitchen-accessories"
+              ],
               onSelectedCategoriesChanged: (selectedCategories) {
                 _selectedCategories = selectedCategories;
               },
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 12,
           ),
-
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             'Price',
             style: TextStyle(
                 fontSize: 16,
@@ -100,8 +105,8 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             divisions: 100,
             onChanged: _onRangeChanged,
           ),
-          SizedBox(height: 20),
-          Text(
+          const SizedBox(height: 20),
+          const Text(
             'Brands',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
@@ -111,7 +116,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               _selectedBrands = selectedCategories;
             },
           ),
-          Spacer(),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -129,7 +134,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   },
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 9.75,
               ),
               Expanded(
@@ -139,13 +144,12 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                   onPressed: () {
                     filterProvider.fetchAllProducts(_selectedCategories);
                     // Apply filter logic here
-
                   },
                 ),
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           )
         ],

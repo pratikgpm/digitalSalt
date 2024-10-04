@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/theme/app_pallete.dart';
+
 class CustomToggleButtons extends StatefulWidget {
   final List<String> buttonLabels;
   final ValueChanged<int> onToggle;
@@ -27,16 +28,16 @@ class _CustomToggleButtonsState extends State<CustomToggleButtons> {
       },
       child: Container(
         width: 73,
-        padding: EdgeInsets.symmetric(vertical: 6,horizontal: 2),
+        padding: const EdgeInsets.symmetric(vertical: 6, horizontal: 2),
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blue : Colors.transparent,
-          borderRadius: BorderRadius.circular(20)
-                 ),
+            color: isSelected ? Colors.blue : Colors.transparent,
+            borderRadius: BorderRadius.circular(20)),
         child: Center(
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 14,fontWeight: FontWeight.w400,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
               color: isSelected ? Pallete.whiteColor : Pallete.regFontColr,
             ),
           ),

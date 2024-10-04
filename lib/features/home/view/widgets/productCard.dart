@@ -24,8 +24,8 @@ class CustomProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         height: 98,
-        padding: EdgeInsets.symmetric(horizontal:14),
-        margin: EdgeInsets.only(bottom: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 14),
+        margin: const EdgeInsets.only(bottom: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           color: Pallete.whiteColor,
@@ -49,7 +49,9 @@ class CustomProductCard extends StatelessWidget {
                     color: Pallete.bggrey,
                     borderRadius: BorderRadius.circular(10)),
               ),
-              SizedBox(width: 35,),
+              const SizedBox(
+                width: 35,
+              ),
               Expanded(
                 child: SizedBox(
                   child: Center(
@@ -61,35 +63,43 @@ class CustomProductCard extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.fade,
                           title,
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontWeight: FontWeight.w500,
                               fontSize: 14,
                               color: Pallete.headingFontColr),
                         ),
                         Text(
                           brand,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Pallete.formFieldGrey,
                               fontSize: 12,
                               fontWeight: FontWeight.w400),
                         ),
                         Row(
                           children: [
-                            Text('\$${price}', style: TextStyle(
-                                color: Pallete.bgBlue,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w700),),
-                            SizedBox(width: 6,),
+                            Text(
+                              '\$${price}',
+                              style: const TextStyle(
+                                  color: Pallete.bgBlue,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              width: 6,
+                            ),
                             Container(
-                              padding: EdgeInsets.symmetric(horizontal: 8,vertical: 1),
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 1),
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10),
-                                color: Color(0xffFFEBF0)
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: const Color(0xffFFEBF0)),
+                              child: Text(
+                                '${discount}% off',
+                                style: const TextStyle(
+                                    color: Pallete.orange,
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w400),
                               ),
-                              child: Text('${discount}% off',style:TextStyle(
-                                  color: Pallete.orange,
-                                  fontSize: 10,
-                                  fontWeight: FontWeight.w400),),
                             ),
                           ],
                         )
