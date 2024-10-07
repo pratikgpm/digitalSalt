@@ -1,22 +1,22 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class Product {
-  final int id;
-  final String title;
-  final String brand;
-  final double price;
-  final double discount;
-  final String imageUrl;
-  final String category;
+   int ? id;
+   String ? title;
+   String ? brand;
+   dynamic ?  price;
+   dynamic ? discount;
+   String  ? imageUrl;
+   String ? category;
 
   Product({
-    required this.id,
-    required this.title,
-    required this.brand,
-    required this.price,
-    required this.discount,
-    required this.imageUrl,
-    required this.category,
+    this.id,
+     this.title,
+    this.brand,
+    this.price,
+    this.discount,
+     this.imageUrl,
+     this.category,
   });
 
   Product copyWith({
@@ -67,10 +67,10 @@ class Product {
   factory Product.fromJson(Map<String, dynamic> json)
   {
     return Product(
-      id: json['id'],
-      title: json['title'],
-      brand: json['brand'],
-      price: json['price'],
+      id: json['id'] ?? '',
+      title: json['title']?? '',
+      brand: json['brand']?? '',
+      price: json['price']?? '',
       discount: json['discountPercentage'] ?? '',
       imageUrl: json['images'][0] ?? '',
       category: json['category'] ?? '',

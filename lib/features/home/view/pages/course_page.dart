@@ -5,7 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../core/theme/app_pallete.dart';
-import '../../../services/product_api.dart';
 import '../../model/product_model.dart';
 import '../widgets/customSearch.dart';
 import '../widgets/productCard.dart';
@@ -29,9 +28,6 @@ class _courseScreenState extends State<courseScreen> {
   @override
   void initState() {
     super.initState();
-    // Specify the categories you want to filter
-    futureProducts =
-        fetchFilteredProducts(['mens-shirts', 'mens-shoes', 'beauty']);
     productProvider = ProductProvider();
     productProvider.fetchAllProducts();
   }
@@ -67,7 +63,7 @@ class _courseScreenState extends State<courseScreen> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 4,
           ),
           SizedBox(
@@ -75,15 +71,14 @@ class _courseScreenState extends State<courseScreen> {
               child: CustomSearchField(
                 hintText: "Find Course",
                 onSearchBarHit: () {
-                Navigator.push(context, filterSearchScreen.route());
+                  Navigator.push(context, filterSearchScreen.route());
                 },
                 onChanged: (value) {
                   //when user enter the value
                 },
                 onFilterPressed: () {
-
                   //this is can triger filterBottomScreen Appear
-                 // showFilterBottomSheet(context);
+                  // showFilterBottomSheet(context);
                 },
               )),
           Row(
@@ -200,6 +195,7 @@ class _courseScreenState extends State<courseScreen> {
           SizedBox(
             width: 253,
             child: CustomToggleButtons(
+              //its functionality can be implemented by using API sort path available on web
               buttonLabels: ['All', 'Popular', 'New'],
               onToggle: (index) {
                 // Handle the toggle action here
@@ -239,9 +235,11 @@ class _courseScreenState extends State<courseScreen> {
                             }
                             final product = provider.allProducts[index];
                             return CustomProductCard(
-                              brand: product.brand,
-                              title: product.title,
-                              imageUrl: product.imageUrl,
+                              brand: product.brand.toString().length > 1
+                                  ? product.brand.toString()
+                                  : product.category.toString(),
+                              title: product.title ?? " ",
+                              imageUrl: product.imageUrl ?? " ",
                               discount: product.discount.toString(),
                               price: product.price.toString(),
                             );
@@ -250,32 +248,6 @@ class _courseScreenState extends State<courseScreen> {
                   },
                 ),
               ),
-              // child: FutureBuilder<List<Product>>(
-              //   future: futureProducts,
-              //   builder: (context, snapshot) {
-              //     if (snapshot.connectionState == ConnectionState.waiting) {
-              //       return Center(child: CircularProgressIndicator());
-              //     } else if (snapshot.hasError) {
-              //       return Center(child: Text('Error: ${snapshot.error}'));
-              //     } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              //       return Center(child: Text('No products found'));
-              //     } else {
-              //       return ListView.builder(
-              //         itemCount: snapshot.data!.length,
-              //         itemBuilder: (context, index) {
-              //           Product product = snapshot.data![index];
-              //           return CustomProductCard(
-              //             brand: product.brand,
-              //             title: product.title,
-              //             imageUrl: product.imageUrl,
-              //             discount: product.discount.toString(),
-              //             price: product.price.toString(),
-              //           );
-              //         },
-              //       );
-              //     }
-              //   },
-              // ),
             ),
           )
         ],

@@ -14,7 +14,7 @@ class CustomToggleButtons extends StatefulWidget {
 }
 
 class _CustomToggleButtonsState extends State<CustomToggleButtons> {
-  int selectedIndex = -1; // Initialize to -1 for no selection
+  int selectedIndex = 0; // Initialize to -1 for no selection
 
   Widget buildToggleButton(String text, int index) {
     bool isSelected = selectedIndex == index;

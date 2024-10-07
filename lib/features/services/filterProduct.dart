@@ -7,9 +7,9 @@ import 'package:http/http.dart' as http;
 class filterRepository {
   static const String _baseURL = 'https://dummyjson.com/products';
 
-  Future<List<Product>> filterProduct(String category) async {
+  Future<List<Product>> filterProduct() async {
     final responce = await http.get(Uri.parse(
-        '$_baseURL/$category?limit=10&select=id,title,brand,price,discountPercentage,images,category'));
+        '$_baseURL?limit=0&select=id,title,brand,price,discountPercentage,images,category'));
     if (responce.statusCode == 200) {
       List<dynamic> jsonResponce = jsonDecode(responce.body)['products'];
       return jsonResponce.map((data) => Product.fromJson(data)).toList();
