@@ -1,39 +1,26 @@
 import 'package:digital_salt/core/theme/app_pallete.dart';
 import 'package:digital_salt/features/controller/filterController.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:provider/provider.dart';
 import '../../../services/filterProduct.dart';
 import '../widgets/customSearch.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../widgets/filterBottomMenu.dart';
 import '../widgets/productCard.dart';
 
-class filterSearchScreen extends StatefulWidget {
+class filterSearchScreen extends ConsumerWidget {
   static route() => MaterialPageRoute(
         builder: (context) => filterSearchScreen(),
       );
 
   const filterSearchScreen({super.key});
 
-  @override
-  State<filterSearchScreen> createState() => _filterSearchState();
-}
-
-class _filterSearchState extends State<filterSearchScreen> {
-  late FilterProvider filterProvider;
-  late filterRepository filterRepo;
+ // late filterRepository filterRepo;
 
   @override
-  void initState() {
-    // TODO: implement initState
-
-    super.initState();
-    filterProvider = FilterProvider();
-    filterProvider.fetchFilterProducts();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
+    final filterProduct = ref.watch(resultProvider);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -60,35 +47,38 @@ class _filterSearchState extends State<filterSearchScreen> {
                   fontSize: 18,
                   color: Pallete.headingFontColr),
             ),
-            const SizedBox(
-              height: 5,
+          Expanded(
+            child: Container(
+              width: double.maxFinite,
+              padding: EdgeInsets.symmetric(vertical: 10),
+              child:
+                  filterProduct.isEmpty ? const Center(
+                    child:  Text(
+                      "No Results til now ",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 18,
+                          color: Pallete.headingFontColr),
+                    ),
+                  ):
+              ListView.builder(
+                itemCount: filterProduct.length,
+                itemBuilder: (context, index) {
+                  final product = filterProduct[index];
+                  return CustomProductCard(
+                    brand: product.brand.toString().length > 1
+                        ? product.brand.toString()
+                        : product.category.toString(),
+                    title: product.title ?? " ",
+                    imageUrl: product.imageUrl ?? " ",
+                    discount: product.discount.toString(),
+                    price: product.price.toString(),
+                  );
+
+                },),
             ),
-            Expanded(
-                child: SizedBox(
-                child: Consumer<FilterProvider>(
-                builder: (context, val, child) {
-                debugPrint(filterProvider.allProducts.length.toString());
-                debugPrint(filterProvider.filteredProduct.length.toString());
-                return ListView.builder(
-                  itemCount: filterProvider.filteredProduct.length,
-                  itemBuilder: (context, index) {
-                    final product = filterProvider.filteredProduct[index];
-                    return filterProvider.isLoading
-                        ? Center(
-                            child: CircularProgressIndicator(
-                            color: Pallete.bgBlue,
-                          ))
-                        : CustomProductCard(
-                            brand: product.brand ?? product.category.toString(),
-                            title: product.title!,
-                            imageUrl: product.imageUrl ?? '',
-                            discount: product.discount.toString(),
-                            price: product.price.toString(),
-                          );
-                  },
-                );
-              },
-            ))),
+          )
+
           ],
         ),
       ),

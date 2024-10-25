@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../home/model/product_model.dart';
 import '../services/filterProduct.dart';
 
-class FilterProvider extends ChangeNotifier {
-  final _filterRepository = filterRepository();
+
+
+class FilterProvider extends StateNotifier<bool>  {
+  FilterProvider() : super(false);
   final List<Product> allProducts = [];
   final List<Product> filteredProduct = [];
+  final _filterRepository = filterRepository();
   final List<String> categories = [];
   bool isLoading = false;
 
   Future<void> fetchFilterProducts() async {
     isLoading = true;
-    notifyListeners();
     try {
       List<Product> newProduct = await _filterRepository.filterProduct();
       if (newProduct.isEmpty) {
@@ -25,7 +28,7 @@ class FilterProvider extends ChangeNotifier {
       print("custom exception occur");
     } finally {
       isLoading = false;
-      notifyListeners();
+
     }
   }
 
@@ -40,6 +43,5 @@ class FilterProvider extends ChangeNotifier {
     print(filteredProduct.length.toString());
 
 // Apply filter logic here
-  notifyListeners();
   }
 }
